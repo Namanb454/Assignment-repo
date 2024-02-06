@@ -1,24 +1,23 @@
 import logo from './logo.svg';
 import './App.css';
+import CreateOrder from './components/CreateOrder';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Admin from './pages/Admin';
+import Delete from './components/Delete';
+import Update from './components/Update';
+import Sign from './pages/Sign';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/admin' element={<Admin />} />
+        <Route path='/' element={<Sign />} />
+        <Route path='/create-order' element={<CreateOrder />} />
+        <Route path='/delete/:id' element={<Delete />} />
+        <Route path='/update/:id' element={<Update />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

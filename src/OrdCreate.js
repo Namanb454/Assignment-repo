@@ -1,25 +1,7 @@
-import { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
-const EmpEdit = () => {
-    const { empid } = useParams();
-
-    //const [empdata, empdatachange] = useState({});
-
-    useEffect(() => {
-        fetch("http://localhost:3030/orders" + empid).then((res) => {
-            return res.json();
-        }).then((resp) => {
-            idchange(resp.id);
-            customer_namechange(resp.customer_name);
-            customer_emailchange(resp.customer_email);
-            productchange(resp.product);
-            quantitychange(resp.quantity);
-            activechange(resp.isactive);
-        }).catch((err) => {
-            console.log(err.message);
-        })
-    }, []);
+const OrdCreate = () => {
 
     const [id, idchange] = useState("");
     const [customer_name, customer_namechange] = useState("");
@@ -34,21 +16,22 @@ const EmpEdit = () => {
 
     const handlesubmit = (e) => {
         e.preventDefault();
-        const empdata = { id, customer_name, customer_email, product, quantity, active };
+        const orddata = { customer_name, customer_email, product, quantity, active };
 
 
-        fetch("http://localhost:3030/orders/" + empid, {
-            method: "PUT",
+        fetch("http://localhost:3030/orders", {
+            method: "POST",
             headers: { "content-type": "application/json" },
-            body: JSON.stringify(empdata)
+            body: JSON.stringify(orddata)
         }).then((res) => {
             alert('Saved successfully.')
-            navigate('/');
+            navigate('/admin');
         }).catch((err) => {
             console.log(err.message)
         })
 
     }
+
     return (
         <div>
 
@@ -58,7 +41,7 @@ const EmpEdit = () => {
 
                         <div className="card" style={{ "textAlign": "left" }}>
                             <div className="card-title">
-                                <h2>Employee Edit</h2>
+                                <h2>Order Create</h2>
                             </div>
                             <div className="card-body">
 
@@ -73,15 +56,15 @@ const EmpEdit = () => {
 
                                     <div className="col-lg-12">
                                         <div className="form-group">
-                                            <label>Cutomer Name</label>
+                                            <label>Name</label>
                                             <input required value={customer_name} onMouseDown={e => valchange(true)} onChange={e => customer_namechange(e.target.value)} className="form-control"></input>
-                                            {/* {customer_name.length == 0 && validation && <span className="text-danger">Enter the name</span>} */}
+                                            {customer_name.length == 0 && validation && <span className="text-danger">Enter the name</span>}
                                         </div>
                                     </div>
 
                                     <div className="col-lg-12">
                                         <div className="form-group">
-                                            <label>Cutomer Email</label>
+                                            <label>Email</label>
                                             <input value={customer_email} onChange={e => customer_emailchange(e.target.value)} className="form-control"></input>
                                         </div>
                                     </div>
@@ -128,4 +111,4 @@ const EmpEdit = () => {
     );
 }
 
-export default EmpEdit;
+export default OrdCreate;

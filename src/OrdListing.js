@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-const EmpListing = () => {
-    const [empdata, empdatachange] = useState(null);
+const OrdListing = () => {
+    const [orddata, orddatachange] = useState(null);
     const navigate = useNavigate();
 
     const LoadEdit = (id) => {
-        navigate("/employee/edit/" + id);
+        navigate("/order/edit/" + id);
     }
     const Removefunction = (id) => {
         if (window.confirm('Do you want to remove?')) {
@@ -15,6 +15,7 @@ const EmpListing = () => {
             }).then((res) => {
                 alert('Removed successfully.')
                 window.location.reload();
+                navigate('/admin')
             }).catch((err) => {
                 console.log(err.message)
             })
@@ -28,7 +29,7 @@ const EmpListing = () => {
         fetch("http://localhost:3030/orders").then((res) => {
             return res.json();
         }).then((resp) => {
-            empdatachange(resp);
+            orddatachange(resp);
         }).catch((err) => {
             console.log(err.message);
         })
@@ -41,7 +42,7 @@ const EmpListing = () => {
                 </div>
                 <div className="">
                     <div className="w-fit ml-auto my-3">
-                        <Link to="/employee/create" className="bg-green-700 text-white p-2 rounded-lg">Add New (+)</Link>
+                        <Link to="/order/create" className="bg-green-700 text-white p-2 rounded-lg">Add New (+)</Link>
                     </div>
                     <table className="border-1 border-black rounded-full p-10">
                         <thead className="bg-black text-white mb-5">
@@ -56,8 +57,8 @@ const EmpListing = () => {
                         </thead>
                         <tbody>
 
-                            {empdata &&
-                                empdata.map(item => (
+                            {orddata &&
+                                orddata.map(item => (
                                     <tr className="border-1 " key={item.id}>
                                         <div className="m-3">{item.id}</div>
                                         <td>{item.customer_name}</td>
@@ -81,4 +82,4 @@ const EmpListing = () => {
     );
 }
 
-export default EmpListing;
+export default OrdListing;

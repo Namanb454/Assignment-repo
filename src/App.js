@@ -3,12 +3,12 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { onAuthStateChanged } from 'firebase/auth';
 
 import { ProtectedRoute } from './components/protectedRoute';
-import EmpCreate from './EmpCreate';
-import EmpEdit from './EmpEdit';
 import Admin from './pages/Admin';
 import Sign from './pages/Sign';
 import { useEffect, useState } from 'react';
 import { auth } from './pages/Auth';
+import OrdCreate from './OrdCreate';
+import OrdEdit from './OrdEdit';
 
 function App() {
 
@@ -37,9 +37,9 @@ function App() {
           }
           >
           </Route>
-          <Route path='/employee/create' element={<EmpCreate />}></Route>
+          <Route path='/order/create' element={<OrdCreate />}></Route>
 
-          <Route path='/employee/edit/:empid' element={<EmpEdit />}></Route>
+          <Route path='/order/edit/:empid' element={<OrdEdit />}></Route>
         </Routes>
       </BrowserRouter>
     </div>

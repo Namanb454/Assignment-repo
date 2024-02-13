@@ -1,6 +1,6 @@
 import React from 'react'
 import { Navigate, useNavigate } from 'react-router-dom'
-import EmpListing from '../EmpListing';
+import OrdListing from '../OrdListing';
 
 function Admin() {
     const navigate = useNavigate();
@@ -35,7 +35,8 @@ function Admin() {
                 <div class="w-full pt-10 px-4 sm:px-6 md:px-8 lg:ps-72">
                     <header>
                         {/* <Orders /> */}
-                        <EmpListing />
+                        <OrdListing />
+
                     </header>
                 </div>
             </body>

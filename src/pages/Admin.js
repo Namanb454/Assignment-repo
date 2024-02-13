@@ -1,12 +1,13 @@
 import React from 'react'
-import Orders from '../components/Orders'
 import { Navigate, useNavigate } from 'react-router-dom'
+import EmpListing from '../EmpListing';
 
 function Admin() {
     const navigate = useNavigate();
     const logout = () => {
         localStorage.clear()
-        navigate('/')
+        navigate('/');
+        alert('Logout Successfully');
     }
     return (
         <div>
@@ -23,37 +24,18 @@ function Admin() {
                         <img class="object-cover object-center h-32" src='https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ' alt='Woman looking front' />
                     </div>
                     <div class="text-center mt-2">
-                        <h2 class="font-semibold text-gray-100">Admin's Name</h2>
+                        <h2 class="font-semibold text-gray-600">Admin's Name</h2>
                         <p class="text-gray-400">Founder</p>
                     </div>
 
+                    <button onClick={logout} className='px-3 py-1 bg-gray-800 text-white rounded-full'>Logout</button>
 
-                    <nav class="hs-accordion-group p-6 w-full flex flex-col flex-wrap" data-hs-accordion-always-open>
-                        <ul class="space-y-1.5">
-                            <li>
-                                <a href='/' class="flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm text-slate-700 rounded-lg hover:bg-gray-100 dark:bg-gray-900 hover:text-gray-900 dark:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
-                                    Dashboard
-                                </a>
-                            </li>
-                            <li>
-                                <a href='#orders' class="flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm text-slate-700 rounded-lg hover:bg-gray-100 dark:bg-gray-900 hover:text-gray-900 dark:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
-                                    Orders
-                                </a>
-                            </li>
-                            <li>
-                                <button onClick={logout} class="flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm text-slate-700 rounded-lg hover:bg-gray-100 dark:bg-gray-900 hover:text-gray-900 dark:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
-                                    Sign Out
-                                </button>
-                            </li>
-
-
-                        </ul>
-                    </nav>
                 </div>
 
                 <div class="w-full pt-10 px-4 sm:px-6 md:px-8 lg:ps-72">
                     <header>
-                        <Orders />
+                        {/* <Orders /> */}
+                        <EmpListing />
                     </header>
                 </div>
             </body>

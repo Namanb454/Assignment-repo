@@ -1,13 +1,6 @@
 {
   "orders": [
     {
-      "id": "5e2940fdb90821ae660a343c",
-      "customer_name": "Helen Gentry",
-      "customer_email": "helengentry@kyaguru.com",
-      "product": "Product 2",
-      "quantity": 6
-    },
-    {
       "id": "5e2940fdef72aab7db270730",
       "customer_name": "Carmen Brooks",
       "customer_email": "carmenbrooks@kyaguru.com",
